@@ -126,6 +126,7 @@ export default function PokemonDetailScreen() {
 
 
   useEffect(() => {
+    console.log('Abrindo pokémon',id);
     const controller = new AbortController();
 
     async function loadPokemon() {
