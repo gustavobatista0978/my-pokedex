@@ -11,7 +11,7 @@ import { useTheme } from '../../global/themes';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../routes';
-import { validateLogin } from '../../services/authSqlite';
+import { validateLogin } from '../../services/auth';
 
 export default function LoginScreen() {
   const [email, setEmail] = useState('');
@@ -41,7 +41,7 @@ export default function LoginScreen() {
         routes: [{ name: 'PokemonList'}]
       })
     } catch (error) {
-      setErrorMessage('Ocorreu um erro ao consultar o banco');
+      setErrorMessage('Ocorreu um erro ao validar o login');
     } finally {
       setIsLoading(false);
     }

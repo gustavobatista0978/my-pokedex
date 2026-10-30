@@ -259,14 +259,14 @@ export default function PokemonListScreen() {
                 Você ainda não favoritou nenhum Pokémon.
               </Text>
             </View>
-          ) : null
+          ) : undefined
         }
         ListFooterComponent={
           showOnlyFavorites && hasNextPage && isLoadingMore ? (
             <View style={{ paddingVertical: 16 }}>
               <ActivityIndicator color={theme.colors.primary} />
             </View>
-          ) : null
+          ) : undefined
         }
       />
     </View>
