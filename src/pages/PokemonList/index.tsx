@@ -211,26 +211,36 @@ export default function PokemonListScreen() {
         <Text style={styles.buttonLogoutText}>Sair</Text>
       </TouchableOpacity>
 
-      {lastViewed ? (
-        <View style={{ paddingHorizontal: 24, marginBottom: 12, flexDirection: 'row', alignItems: 'center', gap: 12 }}>
-          <Image source={{ uri: lastViewed.imageUrl }} style={{ width: 48, height: 48 }} />
-          <View style={{ flex: 1 }}>
-            <Text style={{ color: theme.colors.text, fontWeight: '700' }}>
-              Último visto: {lastViewed.name}
+     {lastViewed ? (
+  <TouchableOpacity
+    onPress={() =>
+      navigation.navigate('PokemonDetail', { id: lastViewed.id })
+    }
+    style={{ paddingHorizontal: 24, marginBottom: 12, flexDirection: 'row', alignItems: 'center' }}
+  >
+    <Image source={{ uri: lastViewed.imageUrl }} style={{ width: 48, height: 48 }} />
+    <View style={{ flex: 1 }}>
+      <Text style={{ color: theme.colors.text, fontWeight: '700' }}>
+        Último visto: {lastViewed.name}
+      </Text>
+      <Text style={{ color: theme.colors.textSecondary, fontSize: 12 }}>
+        #{String(lastViewed.id).padStart(3, '0')}
+      </Text>
+      <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 4 }}>
+        {lastViewed.types.map((type) => (
+          <View
+            key={type}
+            style={{ backgroundColor: getTypeColor(type), paddingHorizontal: 6, paddingVertical: 2, borderRadius: 4 }}
+          >
+            <Text style={{ color: '#fff', fontSize: 10, textTransform: 'uppercase' }}>
+              {type}
             </Text>
-            <Text style={{ color: theme.colors.textSecondary, fontSize: 12 }}>
-              #{String(lastViewed.id).padStart(3, '0')}
-            </Text>
-            <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 4, marginTop: 4 }}>
-              {lastViewed.types.map((type) => (
-                <View key={type} style={{ backgroundColor: getTypeColor(type), paddingHorizontal: 8, paddingVertical: 2, borderRadius: 999 }}>
-                  <Text style={{ color: '#fff', fontSize: 10, textTransform: 'capitalize' }}>{type}</Text>
-                </View>
-              ))}
-            </View>
           </View>
-        </View>
-      ) : null}
+        ))}
+      </View>
+    </View>
+  </TouchableOpacity>
+) : null}
 
       <View style={styles.actionsRow}>
         <TouchableOpacity
@@ -241,6 +251,16 @@ export default function PokemonListScreen() {
             {showOnlyFavorites ? 'Mostrar Todos' : 'Mostrar Favoritos'}
           </Text>
         </TouchableOpacity>
+
+        <TouchableOpacity
+style={[styles.actionButton,
+{ backgroundColor: theme.colors.primary }]}
+onPress={() => navigation.navigate('About')}>
+<Text style={styles.actionButtonText}>
+Sobre
+</Text>
+</TouchableOpacity>
+
       </View>
 
       <FlatList
