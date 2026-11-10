@@ -7,7 +7,7 @@ justifyContent: 'center', gap: 8 }}>
 <Text style={{ fontSize: 24, fontWeight: 'bold' }}>
 Sobre o app
 </Text>
-<Text>Feito por: Seu Nome – Turma DS</Text>
+<Text>Feito por: Gustavo Batista – Turma DS</Text>
 </View>
 );
 }
