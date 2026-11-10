@@ -1,5 +1,5 @@
 const DEMO_USER = {
-    email: 'flavio@pokedex.com',
+    email: 'gustavo@pokedex.com',
     password: '123456',
 };
 

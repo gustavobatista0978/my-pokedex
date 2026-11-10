@@ -99,6 +99,8 @@ export default function PokemonDetailScreen() {
     const pokeApiUrl = `https://www.pokemon.com/br/pokedex/${pokemon.id}/`;
     const message = `Olha esse Pokémon na Pokédex: ${pokemon.name} (#${String(pokemon.id).padStart(3, '0')})\n${pokeApiUrl}`;
 
+    await Share.share({message,title:'pokémon:${pokemon.name}'})
+
     try {
       const result = await Share.share(
         {
